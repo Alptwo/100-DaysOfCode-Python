@@ -42,28 +42,67 @@ if(would_you_like_to_play == "y"):
     sum_of_player = 0
 
     while(take_another_card == "y"):
-        player_hand = take_another_card()
-        for i in player_hand:
+        player_hand = take_card(player_hand)
+        for i in range(0,len(player_hand)-1):
             sum_of_player = player_hand[i] + sum_of_player
-        for i in dealer_hand:
+        for i in (0,len(dealer_hand)-1):
             sum_of_dealer = dealer_hand[i] + sum_of_dealer
-        #decam edilecek burdan çekilen kartların kontrolu yapilacak (21 olmus mu yoksa 21 den asagida mi yoksa yukarida mi bunun kontrolleri yapilacak)
+        #devam edilecek burdan çekilen kartların kontrolu yapilacak (21 olmus mu yoksa 21 den asagida mi yoksa yukarida mi bunun kontrolleri yapilacak)
 
 
 
     else:
-        print("Your cards was: "+player_hand)
-        print("Dealers cards was: "+dealer_hand)
-        for i in player_hand:
+        print("Your cards was: "+ str(player_hand))
+        print("Dealers cards was: "+str(dealer_hand))
+
+        for i in (0,len(player_hand)-1):
             sum_of_player = player_hand[i] + sum_of_player
         
-        for i in dealer_hand:
+        for i in (0,len(dealer_hand)-1):
             sum_of_dealer = dealer_hand[i] + sum_of_dealer
-        
-        #devam edilecek dealer kart cekmesi gerekebilir onu yapacagim
 
 
-    
+
+        if(sum_of_player <= 21):
+            while(sum_of_player>sum_of_dealer and sum_of_dealer < 17):
+                print("1")
+                sum_of_dealer = 0
+                dealer_hand = take_card(dealer_hand)
+
+                #Burada bir yerde hata var
+                for i in (0,len(dealer_hand)-1):
+                    sum_of_dealer = dealer_hand[i] + sum_of_dealer
+
+
+
+                if(sum_of_dealer==21 and sum_of_player!=21):
+                    print("Dealers cards: "+str(dealer_hand))
+                    print("Your cards: "+str(player_hand))
+                    print("Dealer won!")
+                    break
+
+
+                elif(sum_of_dealer > sum_of_player):
+                    print("Dealers cards: "+str(dealer_hand))
+                    print("Your cards: "+str(player_hand))
+                    print("Dealer won!")
+                    break
+
+
+                elif(sum_of_dealer>21):
+                    print("Dealers cards: "+str(dealer_hand))
+                    print("Your cards: "+str(player_hand))
+                    print("Player won!")
+                    break
+
+
+                elif(sum_of_player == sum_of_dealer and sum_of_dealer >= 17):
+                    print("Dealers cards: "+str(dealer_hand))
+                    print("Your cards: "+str(player_hand))
+                    print("Draw!!")
+                    break
+
+
 
 
 else:
