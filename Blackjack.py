@@ -22,6 +22,10 @@ def game_start():
 
     return player_hand, dealer_hand
 
+def take_card(cards_on_hand):
+    cards_on_hand.append(cards[randint(0,12)])
+    return cards_on_hand
+
 
 take_another_card = "y"
 if(would_you_like_to_play == "y"):
@@ -30,18 +34,23 @@ if(would_you_like_to_play == "y"):
         sum_of_player = player_hand[i] + sum_of_player
         sum_of_dealer = dealer_hand[i] + sum_of_dealer
 
-        if(sum_of_player >= 21):
-            if (sum_of_player == 21 and sum_of_dealer != 21):
+        if (sum_of_player == 21 and sum_of_dealer != 21):
                 print("Congrats you won!")
-            elif (sum_of_player > 21):
-                print("Bummer you lost :(")
 
     take_another_card = input("Would you like to take another card? (y or n)\n")
     sum_of_dealer = 0
     sum_of_player = 0
 
-    if(take_another_card == "y"):
-        print("")
+    while(take_another_card == "y"):
+        player_hand = take_another_card()
+        for i in player_hand:
+            sum_of_player = player_hand[i] + sum_of_player
+        for i in dealer_hand:
+            sum_of_dealer = dealer_hand[i] + sum_of_dealer
+        #decam edilecek burdan çekilen kartların kontrolu yapilacak (21 olmus mu yoksa 21 den asagida mi yoksa yukarida mi bunun kontrolleri yapilacak)
+
+
+
     else:
         print("Your cards was: "+player_hand)
         print("Dealers cards was: "+dealer_hand)
@@ -51,7 +60,7 @@ if(would_you_like_to_play == "y"):
         for i in dealer_hand:
             sum_of_dealer = dealer_hand[i] + sum_of_dealer
         
-        #devam edilecek
+        #devam edilecek dealer kart cekmesi gerekebilir onu yapacagim
 
 
     
