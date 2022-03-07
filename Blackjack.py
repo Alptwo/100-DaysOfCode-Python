@@ -44,13 +44,25 @@ if(would_you_like_to_play == "y"):
         player_hand = take_card(player_hand)
         for i in range(0,len(player_hand)):
             sum_of_player = player_hand[i] + sum_of_player
-        for i in range(0,len(dealer_hand)):
-            sum_of_dealer = dealer_hand[i] + sum_of_dealer
+
+        print("Dealers cards: ["+str(dealer_hand[0])+", *]") 
+        print("Your cards: "+str(player_hand))
+
         #devam edilecek burdan çekilen kartların kontrolu yapilacak (21 olmus mu yoksa 21 den asagida mi yoksa yukarida mi bunun kontrolleri yapilacak)
+        if(sum_of_player > 21):
+            print("Dealers cards: "+str(dealer_hand))
+            print("Your cards: "+str(player_hand))
+            print("Dealer won!")
+            break
+        take_another_card = input("Would you like to take another card? (y or n)\n")
+        if(sum_of_player == 21):
+            take_another_card = "n"
+            break
+        sum_of_player = 0
 
 
 
-    else:
+    if(take_another_card == "n"):
 
         for i in range(0,len(player_hand)):
             sum_of_player = player_hand[i] + sum_of_player
@@ -69,11 +81,11 @@ if(would_you_like_to_play == "y"):
 
         if(sum_of_player <= 21):
             while(sum_of_player>=sum_of_dealer and sum_of_dealer < 17):
-                print("1")
+
                 dealer_hand = take_card(dealer_hand)
 
                 sum_of_dealer = 0
-                #Burada hata var kart cekince yanlis topluyor
+
                 for card in range(0, (len(dealer_hand))):
                     sum_of_dealer = dealer_hand[card] + sum_of_dealer
 
@@ -102,7 +114,6 @@ if(would_you_like_to_play == "y"):
             print("Your cards: "+str(player_hand))
             print("Dealer won!")
 
-
         if(sum_of_player < sum_of_dealer):
             if (sum_of_dealer > sum_of_player and sum_of_dealer <= 21):
                 print("Dealers cards: "+str(dealer_hand))
@@ -125,11 +136,6 @@ if(would_you_like_to_play == "y"):
                 print("Dealers cards: "+str(dealer_hand))
                 print("Your cards: "+str(player_hand))
                 print("Player won!")
-
-
-
-
-
 
 else:
     print("Okay maybe later than goodbye")  
