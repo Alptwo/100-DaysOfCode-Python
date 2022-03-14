@@ -8,7 +8,7 @@ num_of_black_fur = 0
 num_of_cinnomon_fur = 0
 num_of_gray_fur = 0
 
-#could also used num_of_gray_fur = len(squirrel_data[squirrel_color_data == "Gray"]) etc.
+#could also used num_of_gray_fur = len(squirrel_data[squirrel_color_data == "Gray"]) etc. (this would be much more efficent)
 
 for color_data in squirrel_color_data:
     if(color_data == "Black"):
