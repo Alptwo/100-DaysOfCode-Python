@@ -2,8 +2,6 @@ import pyautogui
 import time
 from tkinter import *
 
-screensize = pyautogui.size()
-
 while 1==1:
     position = pyautogui.position()
     pyautogui.moveTo(position[0] + 30, position[1] + 30, duration = 1)
