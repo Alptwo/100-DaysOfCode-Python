@@ -5,6 +5,7 @@ from tkinter import *
 screensize = pyautogui.size()
 
 while 1==1:
-    pyautogui.moveTo(200, 100, duration = 1)
+    position = pyautogui.position()
+    pyautogui.moveTo(position[0] + 30, position[1] + 30, duration = 1)
+    pyautogui.moveTo(position[0], position[1], duration = 1)
     time.sleep(20)
-    pyautogui.moveTo(300, 100, duration = 1)
